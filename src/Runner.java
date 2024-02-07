@@ -10,8 +10,11 @@ public class Runner {
 
 ////////////////////////////////////////////////////////////////////////////////////
         // TODO: Tüm Süper Kahramanları allHeros listesine ekleyin.
-
-
+        allHeroes.add("Batman");
+        allHeroes.add("SpiderMan");
+        allHeroes.add("Superman");
+        allHeroes.add("Wolverine");
+        allHeroes.add("WonderWoman");
 
 
         ////////////////////////////////////////////////////////////////////////////////////
@@ -19,11 +22,35 @@ public class Runner {
         //      "Süper Kahramanlar gösterisine hoş geldiniz..."
         //      "Mevcut Süper Kahramanlar: " + allHeroes
         //       "Çıkmak için q'ya basın..."
+        Scanner scanner = new Scanner(System.in);
+        String choice;
+        HeroFactory heroFactory = new HeroFactory();
+        do {
+            System.out.println("Süper Kahramanlar gösterisine hoş geldiniz..." +
+                    "\nMevcut Süper Kahramanlar: " + allHeroes +
+                    "\nÇıkmak için q'ya basın...");
+            System.out.println("Hangi süper kahramanı eklemek istiyorsunuz?");
+            choice = scanner.nextLine();
 
+            if (choice.equalsIgnoreCase("q")) {
+                System.out.println("Çıkış yaptınız. Görüşmek üzere...");
+                break;
+            } else if (allHeroes.contains(choice) && !activeHeroes.contains(choice)) {
+                heroFactory.produceSuperHero(choice).printInfo();
+                heroFactory.produceSuperHero(choice).attack();
+                heroFactory.produceSuperHero(choice).exposeSecretPower();
+                activeHeroes.add(choice);
+                System.out.println(choice + " başarıyla eklendi!");
+            } else if (activeHeroes.contains(choice)) {
+                System.out.println(choice + " zaten oyunda aktif!");
+            } else if (!allHeroes.contains(choice)) {
+                System.out.println("Lütfen geçerli bir kahraman giriniz.");
+            }
 
+            System.out.println("Oyunda aktif kahramanlar" + activeHeroes);
+            System.out.println("Henüz eklenmemiş kahramanlar: " + getRemainingHeroes(allHeroes, activeHeroes));
 
-
-
+        } while (!choice.equalsIgnoreCase("q"));
 
 
         ////////////////////////////////////////////////////////////////////////////////////
@@ -38,9 +65,6 @@ public class Runner {
 
         //NOT: getRemainingHeroes(){} metodunu oyuna girmemiş kahramanlar için kullanabilirsiniz...
     }
-
-
-
 
 
     // TODO Bu methodda bir degisiklik yapmayiniz

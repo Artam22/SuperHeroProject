@@ -3,7 +3,6 @@ public class HeroFactory {
 
      // TODO BU CLASS'TA BİR DEĞİŞİKLİK YAPMANIZA GEREK YOK
     public SuperHeroes produceSuperHero(String superHero) {
-
         if (superHero.equalsIgnoreCase("Superman")) {
             return new Superman("Superman", "erkek", "1000", "800", "900", "Supersonic Flight");
         } else if (superHero.equalsIgnoreCase("WonderWoman")) {
