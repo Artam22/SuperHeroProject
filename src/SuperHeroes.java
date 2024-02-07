@@ -9,11 +9,11 @@ public class SuperHeroes {
     private String beauty;
 
     public SuperHeroes(String name, String gender, String aggression, String wisdom, String beauty) {
-        this.aggression = aggression;
-        this.gender = gender;
-        this.wisdom = wisdom;
-        this.beauty = beauty;
-        this.name = name;
+        setAggression(aggression);
+        setGender(gender);
+        setWisdom(wisdom);
+        setBeauty(beauty);
+        setName(name);
     }
 
     public void setName(String name) {
